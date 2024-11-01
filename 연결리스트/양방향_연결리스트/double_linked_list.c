@@ -90,21 +90,11 @@ void remove_node(Node **head, Node *node)
     }
     else
     {
-        Node *current_node = *head;
+        node->previous_node->next_node = node->next_node;
 
-        while (current_node != NULL && current_node->next_node != node)
+        if (node->next_node != NULL)
         {
-            current_node = current_node->next_node;
-        }
-
-        if (current_node != NULL)
-        {
-            if (current_node->next_node != NULL)
-            {
-                current_node->next_node->previous_node = node->previous_node;
-            }
-
-            current_node->next_node = node->next_node;
+            node->next_node->previous_node = node->previous_node;
         }
     }
 }
