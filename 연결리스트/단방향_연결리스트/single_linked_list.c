@@ -10,6 +10,11 @@ Node *create_node(int data)
     return node;
 }
 
+void delete_node(Node *node)
+{
+    free(node);
+}
+
 void add_node(Node **head, Node *new_node)
 {
     if (*head == NULL)
@@ -29,47 +34,50 @@ void add_node(Node **head, Node *new_node)
     }
 }
 
+void insert_before_node(Node **head, Node *node, Node *new_node)
+{
+    if (*head == node)
+    {
+        new_node->next_node = *head;
+        *head = new_node;
+    }
+    else
+    {
+        Node *previous_node = *head;
+
+        while (previous_node != NULL && previous_node->next_node != node)
+        {
+            previous_node = previous_node->next_node;
+        }
+
+        new_node->next_node = node;
+        previous_node->next_node = new_node;
+    }
+}
+
 void insert_after_node(Node **node, Node *new_node)
 {
-    if (node == NULL || new_node == NULL)
-    {
-        return;
-    }
-
     new_node->next_node = (*node)->next_node;
     (*node)->next_node = new_node;
 }
 
 void remove_node(Node **head, Node *node)
 {
-    if (node == NULL)
-    {
-        return;
-    }
-
     if (*head == node)
     {
         *head = node->next_node;
     }
     else
     {
-        Node *current_node = *head;
+        Node *previous_node = *head;
 
-        while (current_node != NULL && current_node->next_node != node)
+        while (previous_node != NULL && previous_node->next_node != node)
         {
-            current_node = current_node->next_node;
+            previous_node = previous_node->next_node;
         }
 
-        if (current_node != NULL)
-        {
-            current_node->next_node = node->next_node;
-        }
+        previous_node->next_node = node->next_node;
     }
-}
-
-void delete_node(Node *node)
-{
-    free(node);
 }
 
 Node *get_node_at(Node *head, int index)
@@ -92,10 +100,11 @@ Node *get_node_at(Node *head, int index)
 int get_size(Node *head)
 {
     int length = 0;
+    Node *current_node = head;
 
-    while (head != NULL)
+    while (current_node != NULL)
     {
-        head = head->next_node;
+        current_node = current_node->next_node;
 
         length++;
     }
