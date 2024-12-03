@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "double_linked_list.h"
+#include "doubly_linked_list.h"
 
 int main(int argc, char *argv[])
 {

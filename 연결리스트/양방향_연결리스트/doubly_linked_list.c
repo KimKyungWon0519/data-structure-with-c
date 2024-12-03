@@ -1,4 +1,4 @@
-#include "double_linked_list.h"
+#include "doubly_linked_list.h"
 
 Node *create_node(int data)
 {
