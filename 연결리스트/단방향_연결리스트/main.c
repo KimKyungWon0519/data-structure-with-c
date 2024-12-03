@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "single_linked_list.h"
+#include "singly_linked_list.h"
 
 int main(int argc, char *argv[])
 {
