@@ -104,10 +104,11 @@ Node *get_node_at(Node *head, int index)
 int get_size(Node *head)
 {
     int length = 0;
+    Node *current_node = head;
 
-    while (head != NULL)
+    while (current_node != NULL)
     {
-        head = head->next_node;
+        current_node = current_node->next_node;
 
         length++;
     }
