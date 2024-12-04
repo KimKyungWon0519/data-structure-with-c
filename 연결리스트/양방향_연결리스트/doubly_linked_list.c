@@ -68,11 +68,6 @@ void insert_after_node(Node **node, Node *new_node)
 
 void remove_node(Node **head, Node *node)
 {
-    if (node == NULL)
-    {
-        return;
-    }
-
     if (*head == node)
     {
         *head = node->next_node;
