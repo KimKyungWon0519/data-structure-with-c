@@ -55,11 +55,6 @@ void insert_before_node(Node **head, Node *node, Node *new_node)
 
 void insert_after_node(Node **node, Node *new_node)
 {
-    if (node == NULL || new_node == NULL)
-    {
-        return;
-    }
-
     new_node->previous_node = *node;
     new_node->next_node = (*node)->next_node;
 
