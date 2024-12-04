@@ -38,21 +38,16 @@ void add_node(Node **head, Node *new_node)
 
 void insert_before_node(Node **head, Node *node, Node *new_node)
 {
-    if (head == NULL || node == NULL || new_node == NULL)
-    {
-        return;
-    }
-
     new_node->previous_node = node->previous_node;
     new_node->next_node = node;
 
-    if (node->previous_node != NULL)
-    {
-        node->previous_node->next_node = new_node;
-    }
-    else if (*head == node)
+    if (*head == node)
     {
         *head = new_node;
+    }
+    else
+    {
+        node->previous_node->next_node = new_node;
     }
 
     node->previous_node = new_node;
