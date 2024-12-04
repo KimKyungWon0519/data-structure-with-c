@@ -12,11 +12,11 @@ typedef struct _Node
 } Node;
 
 Node *create_node(int data);
+void delete_node(Node *node);
 void add_node(Node **head, Node *new_node);
 void insert_before_node(Node **head, Node *node, Node *new_node);
 void insert_after_node(Node **node, Node *new_node);
 void remove_node(Node **head, Node *node);
-void delete_node(Node *node);
 Node *get_node_at(Node *head, int index);
 int get_size(Node *head);
 

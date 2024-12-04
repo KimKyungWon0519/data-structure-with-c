@@ -11,13 +11,13 @@ Node *create_node(int data)
     return node;
 }
 
+void delete_node(Node *node)
+{
+    free(node);
+}
+
 void add_node(Node **head, Node *new_node)
 {
-    if (new_node == NULL)
-    {
-        return;
-    }
-
     if (*head == NULL)
     {
         *head = new_node;
@@ -97,11 +97,6 @@ void remove_node(Node **head, Node *node)
             node->next_node->previous_node = node->previous_node;
         }
     }
-}
-
-void delete_node(Node *node)
-{
-    free(node);
 }
 
 Node *get_node_at(Node *head, int index)
